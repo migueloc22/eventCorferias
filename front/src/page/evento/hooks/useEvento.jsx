@@ -128,9 +128,17 @@ export default function useEvento() {
     }
   };
   const handleOpenVenta = (event) => {
-    handleOpen();
-    setEvent(event);
-    setopenVenta(true);
+    if (event.boletos_disponibles > 0) {
+      handleOpen();
+      setEvent(event);
+      setopenVenta(true);
+    } else {
+      alert(
+        `No hay boletos disponibles para el evento: ${
+          event.nombre || "este evento"
+        }`
+      );
+    }
   };
   const columns = [
     {
